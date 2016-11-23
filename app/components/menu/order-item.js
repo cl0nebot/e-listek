@@ -5,6 +5,9 @@ export default Ember.Component.extend({
   classNames: ['btn', 'btn-info'],
 
   click() {
-    info(`User would like to order: ${this.get('item')}.`);
+    const item = this.get('item');
+
+    info(`User would like to order: ${item.get('name')}.`);
+    this.sendAction('order', item);
   },
 });
