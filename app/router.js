@@ -8,8 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('menu', function() {
-    this.route('food');
-    this.route('drink');
+    this.route('items', {path: '/:type'});
   });
 });
 
