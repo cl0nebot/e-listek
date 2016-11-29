@@ -1,0 +1,35 @@
+{{#modal-dialog
+    close="close"
+    targetAttachment="center"
+    translucentOverlay=true}}
+
+  {{#each tickets as |ticket|}}
+    <div>
+      <button class="btn btn-info {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
+        {{ticket.name}} {{ticket.price}}
+      </button>
+      {{#if ticket.isActive}}
+        How much: {{input min="0" type='number' value=ticket.count}}
+      {{/if}}
+    </div>
+  {{/each}}
+
+  <button {{action (toggle 'isNewTicketModalOpen' this)}} class="btn btn-info">
+    Or add new ticket
+  </button>
+
+  <button {{action 'submit'}} disabled={{not canSendOrder}} class="btn btn-continue">
+    Send order
+  </button>
+
+  {{#if isNewTicketModalOpen}}
+    {{#modal-dialog
+        close=(action (mut isNewTicketModalOpen false))
+        targetAttachment="center"
+        translucentOverlay=true}}
+      Enter name for new ticket: {{input value=name}}
+      <button {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} class="btn btn-success">Add</button>
+    {{/modal-dialog}}
+  {{/if}}
+
+{{/modal-dialog}}
