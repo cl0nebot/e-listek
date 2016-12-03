@@ -40,6 +40,6 @@ export default [{
     ["leet0036", "Berentzen 0.04l", "alcoholic-drinks", 30],
     ["leet0037", "Napoleon 0.04l", "alcoholic-drinks", 50],
     ["leet0038", "Malibu 0.04l", "alcoholic-drinks", 40],
-    ["leet0039", "Captain Morgan 0.04l", "alcoholic-drinks", 35]
-  ]
+    ["leet0039", "Captain Morgan 0.04l", "alcoholic-drinks", 35],
+  ],
 }];
