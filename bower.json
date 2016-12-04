@@ -4,6 +4,7 @@
     "ember": "~2.9.0",
     "ember-cli-shims": "~0.1.1",
     "bootstrap": "~3.3.5",
-    "blob-polyfill": "^1.0.20150320"
+    "blob-polyfill": "^1.0.20150320",
+    "semantic-ui": "^2.2.6"
   }
 }
