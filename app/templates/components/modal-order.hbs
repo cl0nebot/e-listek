@@ -5,7 +5,7 @@
 
   {{#each tickets as |ticket|}}
     <div>
-      <button class="btn btn-info {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
+      <button class="ui button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
         {{ticket.name}} {{ticket.price}}
       </button>
       {{#if ticket.isActive}}
@@ -14,11 +14,11 @@
     </div>
   {{/each}}
 
-  <button {{action (toggle 'isNewTicketModalOpen' this)}} class="btn btn-info">
+  <button {{action (toggle 'isNewTicketModalOpen' this)}} class="ui button">
     Or add new ticket
   </button>
 
-  <button {{action 'submit'}} disabled={{not canSendOrder}} class="btn btn-continue">
+  <button {{action 'submit'}} disabled={{not canSendOrder}} class="ui button">
     Send order
   </button>
 
@@ -28,7 +28,7 @@
         targetAttachment="center"
         translucentOverlay=true}}
       Enter name for new ticket: {{input value=name}}
-      <button {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} class="btn btn-success">Add</button>
+      <button {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} class="ui button">Add</button>
     {{/modal-dialog}}
   {{/if}}
 
