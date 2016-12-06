@@ -1,7 +1,7 @@
-<div>
-  {{link-to 'Nealkoholické nápoje' 'menu.items' 'non-alcoholic-drinks' class='ui button'}}
-  {{link-to 'Pivo' 'menu.items' 'beer-drinks' class='ui button'}}
-  {{link-to 'Víno' 'menu.items' 'vine-drinks' class='ui button'}}
-  {{link-to 'Teplé nápoje' 'menu.items' 'hot-drinks' class='ui button'}}
-  {{link-to 'Destiláty' 'menu.items' 'alcoholic-drinks' class='ui button'}}
+<div class="ui three column grid">
+  {{#each model as |category|}}
+    <div class="column">
+      {{menu/section-card category=category}}
+    </div>
+  {{/each}}
 </div>
