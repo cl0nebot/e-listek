@@ -1,1 +1,27 @@
 @import './libraries';
+
+.ui.section.segment{
+  padding: 0;
+}
+
+body{
+  background: #F2F3F5;
+}
+.ember-application, .ember-view, .body.grid{
+  height: 100%;
+}
+.side.menu.column{
+  background: #1b1c1d;
+  padding: 0;
+}
+.ui.grid{
+  margin: 0;
+}
+
+h3.section{
+  margin: 0;
+  margin-left: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+}
