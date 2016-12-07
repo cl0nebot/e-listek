@@ -10,6 +10,9 @@ body{
 .ember-application, .ember-view, .body.grid{
   height: 100%;
 }
+.ember-modal-dialog{
+  height: auto;
+}
 .side.menu.column{
   background: #1b1c1d;
   padding: 0;
