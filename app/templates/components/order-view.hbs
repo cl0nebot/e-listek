@@ -1,0 +1,10 @@
+K objednání
+{{#each orderService.currentOrder as |ticket|}}
+  <ul>
+    <li><strong>Lístek: {{ticket.ticket.name}}</strong></li>
+    {{#each ticket.items as |item|}}
+      <li>{{item.item.name}} ({{item.count}}x)</li>
+    {{/each}}
+  </ul>
+{{/each}}
+<button {{action 'order'}}>Objednat</button>

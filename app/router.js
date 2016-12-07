@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('menu', function() {
     this.route('items', {path: '/:type'});
   });
+  this.route('order');
+  this.route('payment');
 });
 
 export default Router;
