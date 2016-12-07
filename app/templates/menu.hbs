@@ -4,17 +4,7 @@
   {{outlet}}
 </div>
 
-<div>
-  Current order
-  {{#each model as |ticket|}}
-    <ul>
-      <li><strong>Ticket: {{ticket.ticket.name}}</strong></li>
-      {{#each ticket.items as |item|}}
-        <li>{{item.item.name}}</li>
-      {{/each}}
-    </ul>
-  {{/each}}
-</div>
+{{order-view}}
 
 {{#if isOrderingModalOpen}}
   {{modal-order
