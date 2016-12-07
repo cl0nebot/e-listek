@@ -2,7 +2,7 @@ import Ember from 'ember';
 const {Logger: {info}} = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['ui', 'button'],
+  classNames: ['ui', 'row', 'button', 'fluid'],
 
   click() {
     const item = this.get('item');
