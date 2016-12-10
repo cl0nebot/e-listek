@@ -7,7 +7,7 @@
       <li>{{item.name}}</li>
     {{/each}}
   </ul>
-  {{#if (gt ticket.items 0)}}
+  {{#if (gt ticket.items.length 0)}}
     <button {{action 'pay' ticket}}>Zaplatit</button>
   {{else}}
     <button {{action 'destroy' ticket}}>Zrušit</button>
