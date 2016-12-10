@@ -1,0 +1,9 @@
+{{yield (action (perform requestWaitress)) isDisabled}}
+
+{{#if isModalOpen}}
+  {{#modal-dialog
+      targetAttachment="center"
+      translucentOverlay=true}}
+    Obsluha je na ceste.
+  {{/modal-dialog}}
+{{/if}}
