@@ -22,6 +22,7 @@ export default Ember.Route.extend({
     addOrder(proxyTickets) {
       this.get('orderService').addOrder(proxyTickets);
       this.send('closeOrder');
+      this.transitionTo('menu');
     },
   },
 });
