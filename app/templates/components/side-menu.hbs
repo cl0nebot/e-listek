@@ -7,7 +7,9 @@
   </button>
 </div>
 <div class="column">
-  <div class="ui fluid inverted button"> Přivolat obsluhu</div>
+  {{#modal-waitress as |openModal isDisabled|}}
+    <button {{action openModal}} disabled={{isDisabled}} class="ui fluid inverted button"> Přivolat obsluhu</button>
+  {{/modal-waitress}}
 </div>
 <div class="column">
   {{link-to ' Menu' 'menu' class="ui fluid inverted button"}}
@@ -17,9 +19,7 @@
 </div>
 <div class="column">
   {{#modal-ticket as |openModal|}}
-    <button {{action openModal}} class="ui fluid inverted button">
-      Vytvořit osobní účet
-    </button>
+    <button {{action openModal}} class="ui fluid inverted button"> Vytvořit osobní účet</button>
   {{/modal-ticket}}
 </div>
 <div class="column">
