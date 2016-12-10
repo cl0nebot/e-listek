@@ -1,0 +1,11 @@
+{{yield (action (toggle 'isNewTicketModalOpen' this))}}
+
+{{#if isNewTicketModalOpen}}
+  {{#modal-dialog
+      close=(action (mut isNewTicketModalOpen false))
+      targetAttachment="center"
+      translucentOverlay=true}}
+    Enter name for new ticket: {{input value=name}}
+    <button {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} class="ui button">Add</button>
+  {{/modal-dialog}}
+{{/if}}

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const {run: {later}} = Ember;
+const {run: {later}, isEmpty} = Ember;
 
 export default Ember.Controller.extend({
   actions: {
@@ -9,6 +9,14 @@ export default Ember.Controller.extend({
         ticket.destroyRecord();
         this.set('isPayModalVisible', false);
       }, 2000);
+    },
+
+    destroy(ticket) {
+      ticket.destroyRecord().then(() => {
+        if (isEmpty(this.get('model'))) {
+          this.transitionToRoute('index');
+        }
+      });
     },
   },
 });

@@ -1,0 +1,30 @@
+<div class="column">
+  <button class="circular ui icon inverted button">
+    <i class="icon help"></i>
+  </button>
+  <button class="circular ui icon inverted right floated button">
+    <i class="icon refresh"></i>
+  </button>
+</div>
+<div class="column">
+  <div class="ui fluid inverted button"> Přivolat obsluhu</div>
+</div>
+<div class="column">
+  {{link-to ' Menu' 'menu' class="ui fluid inverted button"}}
+</div>
+<div class="column">
+  <div class="ui fluid inverted button"> Účet</div>
+</div>
+<div class="column">
+  {{#modal-ticket as |openModal|}}
+    <button {{action openModal}} class="ui fluid inverted button">
+      Vytvořit osobní účet
+    </button>
+  {{/modal-ticket}}
+</div>
+<div class="column">
+  <div class="ui fluid inverted button"> Hry</div>
+</div>
+<div class="column">
+  {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}
+</div>
