@@ -1,7 +1,8 @@
 import Ember from 'ember';
-const {Logger: {info}} = Ember;
+const {Logger: {info}, inject: {service}} = Ember;
 
 export default Ember.Service.extend({
+  store: service(),
   currentOrder: undefined,
 
   init() {
@@ -20,12 +21,21 @@ export default Ember.Service.extend({
     this.reset();
   },
 
+  _createTicketItem(itemProxy) {
+    return this.get('store').createRecord('ticket-item', {
+      count: itemProxy.get('count'),
+      item: itemProxy.get('item'),
+    });
+  },
+
   _applyOrder(order) {
     order.forEach(ticketProxy => {
       const ticket = ticketProxy.get('ticket');
 
-      ticketProxy.get('items').forEach(({item}) => {
-        ticket.get('items').pushObject(item);
+      ticketProxy.get('items').forEach(itemProxy => {
+        const ticketItem = this._createTicketItem(itemProxy);
+        ticketItem.save();
+        ticket.get('ticketItems').pushObject(ticketItem);
       });
 
       ticket.save();

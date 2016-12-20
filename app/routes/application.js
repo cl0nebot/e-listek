@@ -10,6 +10,7 @@ export default Ember.Route.extend({
     return RSVP.all([
       store.importData(parse(fixtures), {json: false}),
       store.findAll('ticket'),
+      store.findAll('ticket-item'),
     ]);
   },
 });
