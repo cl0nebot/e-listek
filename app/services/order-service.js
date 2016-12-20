@@ -1,9 +1,15 @@
 import Ember from 'ember';
-const {Logger: {info}, inject: {service}} = Ember;
+const {Logger: {info}, inject: {service}, computed} = Ember;
 
 export default Ember.Service.extend({
   store: service(),
   currentOrder: undefined,
+
+  currentOrderPrice: computed(function() {
+    return this.get('currentOrder')
+      .reduce((curr, next) => curr + next.items
+        .reduce((curr, next) => curr + next.get('item.price') * next.get('count'), 0), 0);
+  }),
 
   init() {
     this._super(...arguments);
@@ -13,6 +19,7 @@ export default Ember.Service.extend({
 
   reset() {
     this.set('currentOrder', []);
+    this.notifyPropertyChange('price');
   },
 
   sendOrder() {
@@ -65,5 +72,7 @@ export default Ember.Service.extend({
 
       item.incrementProperty('count', parseInt(ticket.count));
     });
+
+    this.notifyPropertyChange('price');
   },
 });
