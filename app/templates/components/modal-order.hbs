@@ -1,27 +1,41 @@
 {{#modal-dialog
     close="close"
     targetAttachment="center"
-    translucentOverlay=true}}
+    translucentOverlay=true
+    container-class="big"}}
 
-  {{#each tickets as |ticket|}}
-    <div>
-      <button class="ui button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
-        {{ticket.name}} {{ticket.price}}
-      </button>
-      {{#if ticket.isActive}}
-        How much: {{input min="0" type='number' value=ticket.count}}
-      {{/if}}
+  <h1>{{item.name}}</h1>
+  <div class="ui two column grid">
+    {{#each tickets as |ticket|}}
+      <div class="order column">
+        <button class="ui fluid button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
+          {{ticket.name}}
+        </button>
+
+      </div>
+      <div class="order column">
+        {{#if ticket.isActive}}
+          <div class="ui fluid input">
+            {{input min="0" class="ui input" type='number' value=ticket.count}}
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
+    <div class="column">
+      {{#modal-ticket as |openModal|}}
+        <button {{action openModal}} class="ui black button">
+          Or add new ticket
+        </button>
+      {{/modal-ticket}}
     </div>
-  {{/each}}
+    <div class="right aligned column">
+      <button class="ui primary button" {{action 'submit'}} disabled={{not canSendOrder}}>
+        Send order
+      </button>
+    </div>
+  </div>
 
-  {{#modal-ticket as |openModal|}}
-    <button {{action openModal}} class="ui button">
-      Or add new ticket
-    </button>
-  {{/modal-ticket}}
 
-  <button {{action 'submit'}} disabled={{not canSendOrder}} class="ui button">
-    Send order
-  </button>
+
 
 {{/modal-dialog}}
