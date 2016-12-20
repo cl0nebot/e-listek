@@ -5,7 +5,9 @@
       close=(action (mut isNewTicketModalOpen false))
       targetAttachment="center"
       translucentOverlay=true}}
-    Enter name for new ticket: {{input value=name}}
-    <button {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} class="ui button">Add</button>
+    <div class="ui fluid action input">
+      {{input value=name class="item-150"}}
+      <button class="ui black button" {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} >Add</button>
+    </div>
   {{/modal-dialog}}
 {{/if}}
