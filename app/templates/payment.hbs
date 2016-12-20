@@ -8,26 +8,24 @@
     </tr>
   </thead>
   <tbody>
-    {{#each model as |ticket|}}
-      {{#if ticket.items}}
+    {{#each (reject-by "price" 0 model) as |ticket|}}
+      <tr>
+        <td colspan="3">
+          <h3>{{ticket.name}}</h3>
+        </td>
+      </tr>
+      {{#each ticket.ticketItems as |ticketItem|}}
         <tr>
-          <td colspan="3">
-            <h3>{{ticket.name}}</h3>
-          </td>
+          <td></td>
+          <td>{{ticketItem.item.name}}</td>
+          <td class="right aligned">{{ticketItem.count}} x {{money ticketItem.item.price}}</td>
         </tr>
-        {{#each ticket.items as |item|}}
-          <tr>
-            <td></td>
-            <td>{{item.name}}</td>
-            <td class="right aligned">{{item.count}} x {{item.price}},-</td>
-          </tr>
-        {{/each}}
-        <tr>
-          <td colspan="3" class="right aligned">
-            <button class="ui positive button" {{action 'pay' ticket}}>Zaplatit</button>
-          </td>
-        </tr>
-      {{/if}}
+      {{/each}}
+      <tr>
+        <td colspan="3" class="right aligned">
+          <button class="ui positive button" {{action 'pay' ticket}}>Zaplatit {{money ticket.price}}</button>
+        </td>
+      </tr>
     {{/each}}
   </tbody>
 </table>

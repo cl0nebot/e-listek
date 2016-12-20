@@ -3,11 +3,11 @@ import Ember from 'ember';
 const {computed} = Ember;
 
 export default DS.Model.extend({
-  items: DS.hasMany('item', {async: false}),
+  ticketItems: DS.hasMany('ticket-item', {async: false}),
 
   name: DS.attr('string'),
 
-  price: computed('items.[]', function() {
-    return this.get('items').reduce((curr, next) => curr + next.get('price'), 0);
+  price: computed('ticketItems.[]', function() {
+    return this.get('ticketItems').reduce((curr, next) => curr + next.get('item.price') * next.get('count'), 0);
   }),
 });

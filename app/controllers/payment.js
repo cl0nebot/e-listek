@@ -6,8 +6,12 @@ export default Ember.Controller.extend({
     pay(ticket) {
       this.set('isPayModalVisible', true);
       later(() => {
-        ticket.destroyRecord();
-        this.set('isPayModalVisible', false);
+        ticket.destroyRecord().then(() => {
+          this.set('isPayModalVisible', false);
+          if (this.isSettled()) {
+            this.transitionToRoute('index');
+          }
+        });
       }, 2000);
     },
 
@@ -18,5 +22,9 @@ export default Ember.Controller.extend({
         }
       });
     },
+  },
+
+  isSettled() {
+    return !this.get('model').any(ticket => ticket.get('price') > 0);
   },
 });
