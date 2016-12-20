@@ -1,18 +1,36 @@
 <h2>K zaplacení</h2>
-
-{{#each model as |ticket|}}
-  <div>{{ticket.name}}</div>
-  <ul>
-    {{#each ticket.items as |item|}}
-      <li>{{item.name}}</li>
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Název účtu</th>
+      <th>Položka</th>
+      <th>Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |ticket|}}
+      {{#if ticket.items}}
+        <tr>
+          <td colspan="3">
+            <h3>{{ticket.name}}</h3>
+          </td>
+        </tr>
+        {{#each ticket.items as |item|}}
+          <tr>
+            <td></td>
+            <td>{{item.name}}</td>
+            <td class="right aligned">{{item.count}} x {{item.price}},-</td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td colspan="3" class="right aligned">
+            <button class="ui positive button" {{action 'pay' ticket}}>Zaplatit</button>
+          </td>
+        </tr>
+      {{/if}}
     {{/each}}
-  </ul>
-  {{#if (gt ticket.items.length 0)}}
-    <button {{action 'pay' ticket}}>Zaplatit</button>
-  {{else}}
-    <button {{action 'destroy' ticket}}>Zrušit</button>
-  {{/if}}
-{{/each}}
+  </tbody>
+</table>
 
 {{#if isPayModalVisible}}
   {{modal-pay model=ticket}}
