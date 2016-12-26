@@ -18,12 +18,7 @@
   <button class="ui fluid inverted {{if orderService.currentOrderPrice 0 'disabled'}} button" {{action 'order'}}> Objednat za {{money orderService.currentOrderPrice}}</button>
 </div>
 <div class="column">
-  <div class="ui fluid inverted button"> Účet</div>
-</div>
-<div class="column">
-  {{#modal-ticket as |openModal|}}
-    <button {{action openModal}} class="ui fluid inverted button"> Vytvořit osobní účet</button>
-  {{/modal-ticket}}
+  {{link-to 'Účty' 'tickets' class="ui fluid inverted button"}}
 </div>
 <div class="column">
   {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}

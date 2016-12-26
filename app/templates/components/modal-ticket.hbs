@@ -5,9 +5,10 @@
       close=(action (mut isNewTicketModalOpen false))
       targetAttachment="center"
       translucentOverlay=true}}
+    <h2>Vytvořit účet</h2>
     <div class="ui fluid action input">
       {{input value=name class="item-150"}}
-      <button class="ui black button" {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} >Add</button>
+      <button class="ui black button" {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} >Přidat</button>
     </div>
   {{/modal-dialog}}
 {{/if}}

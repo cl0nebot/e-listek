@@ -4,7 +4,6 @@ const {Logger: {info}, inject: {service}, computed} = Ember;
 export default Ember.Service.extend({
   store: service(),
   currentOrder: undefined,
-  colors: ['red','blue','yellow'],
 
   currentOrderPrice: computed(function() {
     return this.get('currentOrder')

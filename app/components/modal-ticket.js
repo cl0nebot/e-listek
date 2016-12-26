@@ -3,8 +3,8 @@ const {inject: {service}, computed} = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
-  colors: ['red','blue','yellow'],
   store: service(),
+  colors: service(),
 
   canAddNewTicket: computed('name', function() {
     const name = this.get('name');
@@ -18,7 +18,7 @@ export default Ember.Component.extend({
 
   actions: {
     addNewTicket(name) {
-      const color = this.get('colors').pop();
+      const color = this.get('colors').get('values').pop();
       this.get('store').createRecord('ticket', {name,color}).save().then(() => {
         this.set('name', '');
         this.set('isNewTicketModalOpen', false);
