@@ -4,6 +4,7 @@ const {Logger: {info}, inject: {service}, computed} = Ember;
 export default Ember.Service.extend({
   store: service(),
   currentOrder: undefined,
+  colors: ['red','blue','yellow'],
 
   currentOrderPrice: computed(function() {
     return this.get('currentOrder')
@@ -19,7 +20,7 @@ export default Ember.Service.extend({
 
   reset() {
     this.set('currentOrder', []);
-    this.notifyPropertyChange('price');
+    this.notifyPropertyChange('currentOrderPrice');
   },
 
   sendOrder() {
@@ -73,6 +74,6 @@ export default Ember.Service.extend({
       item.incrementProperty('count', parseInt(ticket.count));
     });
 
-    this.notifyPropertyChange('price');
+    this.notifyPropertyChange('currentOrderPrice');
   },
 });
