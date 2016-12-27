@@ -11,7 +11,7 @@ export default Ember.Service.extend({
       .reduce((curr, next) => curr + next.items
         .reduce((curr, next) => curr + next.get('item.price') * next.get('count'), 0), 0);
   }),
-  showConfirmation(){
+  showConfirmation() {
     this.toggleProperty('isOrderConfirmationShowing');
   },
   init() {

@@ -19,7 +19,7 @@ export default Ember.Component.extend({
   actions: {
     addNewTicket(name) {
       const color = this.get('colors').get('values').pop();
-      this.get('store').createRecord('ticket', {name,color}).save().then(() => {
+      this.get('store').createRecord('ticket', {name, color}).save().then(() => {
         this.set('name', '');
         this.set('isNewTicketModalOpen', false);
       });

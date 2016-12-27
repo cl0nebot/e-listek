@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   colors: service(),
   beforeModel() {
     const store = this.get('store');
-    this.get('colors').values;
+    this.get('colors').fakeInit();
     return RSVP.all([
       store.importData(parse(fixtures), {json: false}),
       store.findAll('ticket'),

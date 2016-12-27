@@ -9,10 +9,10 @@ export default Ember.Controller.extend({
     return path !== 'menu.index';
   }),
   actions: {
-    confirmOrder(){
+    confirmOrder() {
       const orderService = this.get('orderService');
       orderService.sendOrder();
       orderService.toggleProperty('isOrderConfirmationShowing');
-    }
-  }
+    },
+  },
 });
