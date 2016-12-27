@@ -16,8 +16,8 @@
         <td>{{ticket.name}}</td>
         <td class="collapsing">{{money ticket.price}}</td>
         <td class="collapsing">
-          <button class="ui {{ticket.color}} button" {{action 'updateTicket' ticket}}>Upravit</button>
-          <button class="ui red {{unless ticket.price 0 'disabled'}} button" {{action 'delete' ticket}}>Smazat</button>
+          <button class="ui {{ticket.color}} button" {{action 'updateTicket' ticket}}>Přejmenovat</button>
+          <button class="ui red {{if ticket.price 'disabled'}} button" {{action 'delete' ticket}}>Smazat</button>
         </td>
       </tr>
     {{/each}}
@@ -27,10 +27,10 @@
   {{#modal-dialog close="toggleModal"
                   targetAttachment="center"
                   translucentOverlay=true}}
-    <h2>Upravit účet</h2>
+    <h2>Přejmenovat účet</h2>
     <div class="ui fluid action input">
       {{input value=name class="item-150"}}
-      <button class="ui black button" {{action 'submitUpdate' name}} disabled={{not canUpdateTicket}} >Změnit</button>
+      <button class="ui black button" {{action 'submitUpdate' name}} disabled={{not canUpdateTicket}}>Změnit</button>
     </div>
   {{/modal-dialog}}
 {{/if}}

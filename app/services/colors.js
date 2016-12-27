@@ -1,21 +1,24 @@
 import Ember from 'ember';
 const {inject: {service}} = Ember;
+const colors = ['orange', 'blue', 'yellow', 'pink', 'olive', 'violet', 'green', 'purple', 'teal'];
 
 export default Ember.Service.extend({
-  values: [],
+  values: colors,
   store: service(),
+
   init() {
     this._super(...arguments);
-    this.reset();
   },
-  fakeInit() {
 
+  pop() {
+    return this.get('values').popObject();
   },
-  reset() {
-    const values = ['orange', 'blue', 'yellow', 'pink', 'olive', 'violet', 'green', 'purple', 'teal'];
-    this.get('store').findAll('ticket', {reload: true}).then(tickets => {
-      const colors = tickets.getEach("color");
-      this.set('values', values.filter(c => !colors.includes(c)));
-    });
+
+  remove(color) {
+    this.get('values').removeObject(color);
+  },
+
+  push(color) {
+    this.get('values').pushObject(color);
   },
 });

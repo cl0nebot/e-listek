@@ -15,11 +15,16 @@
   {{link-to ' Menu' 'menu' class="ui fluid inverted button"}}
 </div>
 <div class="column">
-  <button class="ui fluid inverted {{if orderService.currentOrderPrice 0 'disabled'}} button" {{action 'order'}}> Objednat za {{money orderService.currentOrderPrice}}</button>
-</div>
-<div class="column">
   {{link-to 'Účty' 'tickets' class="ui fluid inverted button"}}
 </div>
-<div class="column">
-  {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}
-</div>
+{{#if orderService.currentOrderPrice}}
+  {{#order-view as |order|}}
+    <div class="column">
+      <button class="ui fluid inverted button huge orange" {{action order}}> Dokončit objednávku ({{money orderService.currentOrderPrice}})</button>
+    </div>
+  {{/order-view}}
+{{else}}
+  <div class="column">
+    {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}
+  </div>
+{{/if}}
