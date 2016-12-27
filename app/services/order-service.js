@@ -4,13 +4,16 @@ const {Logger: {info}, inject: {service}, computed} = Ember;
 export default Ember.Service.extend({
   store: service(),
   currentOrder: undefined,
+  isOrderConfirmationShowing: false,
 
   currentOrderPrice: computed(function() {
     return this.get('currentOrder')
       .reduce((curr, next) => curr + next.items
         .reduce((curr, next) => curr + next.get('item.price') * next.get('count'), 0), 0);
   }),
-
+  showConfirmation(){
+    this.toggleProperty('isOrderConfirmationShowing');
+  },
   init() {
     this._super(...arguments);
 

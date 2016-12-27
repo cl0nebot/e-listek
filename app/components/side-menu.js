@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   orderService: service(),
   actions: {
     order() {
-      this.get('orderService').sendOrder();
+      this.get('orderService').toggleProperty('isOrderConfirmationShowing');
     },
   },
   tickets: computed(function() {

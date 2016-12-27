@@ -9,7 +9,6 @@ export default Ember.Service.extend({
     this.reset();
   },
   reset(){
-    console.log('xx');
     const values = ['orange','blue','yellow','pink','olive','violet','green','purple','teal'];
     const self = this;
     this.get('store').findAll('ticket', { reload: true }).then(function(tickets) {

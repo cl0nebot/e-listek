@@ -9,7 +9,25 @@
   {{outlet}}
 </div>
 
-{{order-view}}
+{{#if orderService.isOrderConfirmationShowing}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+    <div class="big">
+      <h2>K objednání</h2>
+      {{#each orderService.currentOrder as |ticket|}}
+        <h4>Lístek: {{ticket.ticket.name}}</h4>
+        <div class="ui bulleted list">
+          {{#each ticket.items as |item|}}
+            <div class="item">{{item.item.name}} ({{item.count}}x)</div>
+          {{/each}}
+        </div>
+      {{/each}}
+      <button class="ui fluid primary button" {{action 'confirmOrder'}}>Objednat za {{money orderService.currentOrderPrice}} </button>
+    </div>
+  {{/modal-dialog}}
+{{/if}}
+
 
 {{#if isOrderingModalOpen}}
   {{modal-order
