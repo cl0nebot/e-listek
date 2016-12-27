@@ -14,13 +14,10 @@
   {{#each tickets as |ticket|}}
     <tr>
       <td>{{ticket.name}}</td>
-      <td>{{money ticket.price}}</td>
-      <td>
-        <div class="ui buttons">
+      <td class="collapsing">{{money ticket.price}}</td>
+      <td class="collapsing">
           <button class="ui {{ticket.color}} button" {{action 'updateTicket' ticket}}>Upravit</button>
-          <div class="or" data-text=""></div>
           <button class="ui red {{unless ticket.price 0 'disabled'}} button" {{action 'delete' ticket}}>Smazat</button>
-        </div>
       </td>
     </tr>
   {{/each}}

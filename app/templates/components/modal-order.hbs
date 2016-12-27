@@ -8,7 +8,7 @@
   <div class="ui two column grid">
     {{#each tickets as |ticket|}}
       <div class="order column">
-        <button class="ui {{ticket.color}} fluid button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
+        <button class="ui fluid button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
           {{ticket.name}}
         </button>
 

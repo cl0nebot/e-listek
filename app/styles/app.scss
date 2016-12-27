@@ -28,9 +28,11 @@ h3.section{
   margin-bottom: 5px;
   color: black;
 }
-.row.button{
+.row.order, .order.button{
   padding-left: 1em!important;
-  margin-top: 0.5em;
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  margin-top: 0.3em;
 }
 
 .nav-home{
