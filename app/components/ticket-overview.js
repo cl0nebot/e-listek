@@ -4,7 +4,7 @@ const {inject: {service}, computed} = Ember;
 export default Ember.Component.extend({
   store: service(),
   colors: service(),
-  tickets: computed(function (){
+  tickets: computed(function() {
     return this.get('store').peekAll('ticket');
   }),
   canUpdateTicket: computed('name', function() {

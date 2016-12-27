@@ -4,23 +4,23 @@
 {{/modal-ticket}}
 <table class="ui celled table">
   <thead>
-  <tr>
-    <th>Název účtu</th>
-    <th>Cena</th>
-    <th class="collapsing">Akce</th>
-  </tr>
+    <tr>
+      <th>Název účtu</th>
+      <th>Cena</th>
+      <th class="collapsing">Akce</th>
+    </tr>
   </thead>
   <tbody>
-  {{#each tickets as |ticket|}}
-    <tr>
-      <td>{{ticket.name}}</td>
-      <td class="collapsing">{{money ticket.price}}</td>
-      <td class="collapsing">
+    {{#each tickets as |ticket|}}
+      <tr>
+        <td>{{ticket.name}}</td>
+        <td class="collapsing">{{money ticket.price}}</td>
+        <td class="collapsing">
           <button class="ui {{ticket.color}} button" {{action 'updateTicket' ticket}}>Upravit</button>
           <button class="ui red {{unless ticket.price 0 'disabled'}} button" {{action 'delete' ticket}}>Smazat</button>
-      </td>
-    </tr>
-  {{/each}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
 {{#if isShowingModal}}
