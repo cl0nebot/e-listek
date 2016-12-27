@@ -24,13 +24,13 @@
     <div class="column">
       {{#modal-ticket as |openModal|}}
         <button {{action openModal}} class="ui black button">
-          Or add new ticket
+          nebo vytvořte lístek
         </button>
       {{/modal-ticket}}
     </div>
     <div class="right aligned column">
       <button class="ui primary button" {{action 'submit'}} disabled={{not canSendOrder}}>
-        Send order
+        Přidat k objednávce
       </button>
     </div>
   </div>
