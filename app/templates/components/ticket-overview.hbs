@@ -1,0 +1,36 @@
+<h2>Správa účtů</h2>
+{{#modal-ticket as |openModal|}}
+  <button {{action openModal}} class="ui black button"> Vytvořit osobní účet</button>
+{{/modal-ticket}}
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Název účtu</th>
+      <th>Cena</th>
+      <th class="collapsing">Akce</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tickets as |ticket|}}
+      <tr>
+        <td>{{ticket.name}}</td>
+        <td class="collapsing">{{money ticket.price}}</td>
+        <td class="collapsing">
+          <button class="ui {{ticket.color}} button" {{action 'updateTicket' ticket}}>Upravit</button>
+          <button class="ui red {{unless ticket.price 0 'disabled'}} button" {{action 'delete' ticket}}>Smazat</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{#if isShowingModal}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+    <h2>Upravit účet</h2>
+    <div class="ui fluid action input">
+      {{input value=name class="item-150"}}
+      <button class="ui black button" {{action 'submitUpdate' name}} disabled={{not canUpdateTicket}} >Změnit</button>
+    </div>
+  {{/modal-dialog}}
+{{/if}}

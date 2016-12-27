@@ -4,6 +4,7 @@ const {inject: {service}, computed} = Ember;
 export default Ember.Component.extend({
   tagName: '',
   store: service(),
+  colors: service(),
 
   canAddNewTicket: computed('name', function() {
     const name = this.get('name');
@@ -12,16 +13,13 @@ export default Ember.Component.extend({
       return false;
     }
 
-    if (this.get('store').peekAll('ticket').findBy('name', name)) {
-      return false;
-    }
-
-    return true;
+    return !this.get('store').peekAll('ticket').findBy('name', name);
   }),
 
   actions: {
     addNewTicket(name) {
-      this.get('store').createRecord('ticket', {name}).save().then(() => {
+      const color = this.get('colors').get('values').pop();
+      this.get('store').createRecord('ticket', {name, color}).save().then(() => {
         this.set('name', '');
         this.set('isNewTicketModalOpen', false);
       });

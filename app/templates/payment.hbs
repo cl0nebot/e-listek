@@ -23,7 +23,7 @@
       {{/each}}
       <tr>
         <td colspan="3" class="right aligned">
-          <button class="ui positive button" {{action 'pay' ticket}}>Zaplatit {{money ticket.price}}</button>
+          <button class="ui {{ticket.color}} button" {{action 'pay' ticket}}>Zaplatit {{money ticket.price}}</button>
         </td>
       </tr>
     {{/each}}

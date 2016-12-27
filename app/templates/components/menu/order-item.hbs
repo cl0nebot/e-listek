@@ -1,1 +1,10 @@
-{{item.name}} ({{item.price}})
+<div class="ui fluid order button">
+  <div class="ui two column grid">
+    <div class="left aligned column">
+      {{item.name}}
+    </div>
+    <div class="right aligned column">
+      {{money item.price}}
+    </div>
+  </div>
+</div>

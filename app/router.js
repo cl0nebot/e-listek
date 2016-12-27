@@ -12,6 +12,7 @@ Router.map(function() {
   });
   this.route('order');
   this.route('payment');
+  this.route('tickets');
 });
 
 export default Router;

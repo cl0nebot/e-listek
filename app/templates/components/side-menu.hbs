@@ -8,22 +8,17 @@
 </div>
 <div class="column">
   {{#modal-waitress as |openModal isDisabled|}}
-    <button {{action openModal}} disabled={{isDisabled}} class="ui fluid inverted button"> Přivolat obsluhu</button>
+    <button class="ui fluid inverted button" {{action openModal}} disabled={{isDisabled}}> Přivolat obsluhu</button>
   {{/modal-waitress}}
 </div>
 <div class="column">
   {{link-to ' Menu' 'menu' class="ui fluid inverted button"}}
 </div>
 <div class="column">
-  <div class="ui fluid inverted button"> Účet</div>
+  <button class="ui fluid inverted {{if orderService.currentOrderPrice 0 'disabled'}} button" {{action 'order'}}> Objednat za {{money orderService.currentOrderPrice}}</button>
 </div>
 <div class="column">
-  {{#modal-ticket as |openModal|}}
-    <button {{action openModal}} class="ui fluid inverted button"> Vytvořit osobní účet</button>
-  {{/modal-ticket}}
-</div>
-<div class="column">
-  <div class="ui fluid inverted button"> Hry</div>
+  {{link-to 'Účty' 'tickets' class="ui fluid inverted button"}}
 </div>
 <div class="column">
   {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}

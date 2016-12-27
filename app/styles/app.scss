@@ -28,9 +28,11 @@ h3.section{
   margin-bottom: 5px;
   color: black;
 }
-.row.button{
+.row.order, .order.button{
   padding-left: 1em!important;
-  margin-top: 0.5em;
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  margin-top: 0.3em;
 }
 
 .nav-home{
@@ -58,5 +60,28 @@ h1.exclusive.waitress{
 }
 h1.exclusive.payment{
   font-size: 5vw;
-  margin: 3vw;
+  margin: 5vw;
 }
+.big{
+  padding: 1vw;
+}
+.big>h2{
+  font-size: 3vw;
+  margin-bottom: 0.5vw;
+}
+.big>.button{
+  margin-top: 0.5vw;
+}
+.big>h4{
+  font-size: 1.5vw;
+  margin-top: 0;
+  margin-bottom: 0.2vw;
+}
+.big>.list{
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+}
+.big>.list>.item{
+  font-size: 1.5vw;
+}
+
