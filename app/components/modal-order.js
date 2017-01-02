@@ -23,8 +23,8 @@ export default ModalDialog.extend({
     return this.get('_tickets').map(ticket => OrderSlice.create({
       content: ticket,
       item: this.get('item'),
-      isActive: false,
-      count: 0,
+      isActive: true,
+      count: 1,
     }));
   }),
 
@@ -35,6 +35,9 @@ export default ModalDialog.extend({
   actions: {
     submit() {
       this.sendAction('submit', this.get('tickets').filterBy('isValid'));
+    },
+    finish() {
+      this.sendAction('finish', this.get('tickets').filterBy('isValid'));
     },
   },
 });
