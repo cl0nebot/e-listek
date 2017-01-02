@@ -9,13 +9,13 @@
     {{#each tickets as |ticket|}}
       <div class="order column">
         <button class="ui fluid {{ticket.color}} button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
-          {{ticket.name}}
+          <i class="icon {{if ticket.isActive 'remove' 'checkmark'}}"></i> {{ticket.name}}
         </button>
       </div>
       <div class="order column">
         {{#if ticket.isActive}}
           <div class="ui fluid input">
-            {{input min="0" class="ui input" type='number' value=ticket.count}}
+            {{input min="0" class="ui input" type='number' value=ticket.count autofocus=true}}
           </div>
         {{/if}}
       </div>
@@ -23,18 +23,17 @@
     <div class="column">
       {{#modal-ticket as |openModal|}}
         <button {{action openModal}} class="ui black button">
-          nebo vytvořte lístek
+          <i class="icon add user"></i> Přidat lístek
         </button>
       {{/modal-ticket}}
     </div>
     <div class="right aligned column">
-      <button class="ui primary button" {{action 'submit'}} disabled={{not canSendOrder}}>
-        Přidat k objednávce
+      <button class="ui secondary button" {{action 'submit'}} disabled={{not canSendOrder}}>
+        Pokračovat <br> v objednávání
+      </button>
+      <button class="ui primary button" {{action 'finish'}} disabled={{not canSendOrder}}>
+        Dokončit objednávku <br> a donést na stůl
       </button>
     </div>
   </div>
-
-
-
-
 {{/modal-dialog}}

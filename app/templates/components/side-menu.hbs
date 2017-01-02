@@ -1,30 +1,30 @@
 <div class="column">
-  <button class="circular ui icon inverted button">
-    <i class="icon help"></i>
-  </button>
-  <button class="circular ui icon inverted right floated button">
-    <i class="icon refresh"></i>
-  </button>
+  {{#link-to 'menu' class="ui fluid inverted button large"}}
+    <i class="browser icon"></i> Menu
+  {{/link-to}}
 </div>
 <div class="column">
   {{#modal-waitress as |openModal isDisabled|}}
-    <button class="ui fluid inverted button" {{action openModal}} disabled={{isDisabled}}> Přivolat obsluhu</button>
+    <button class="ui fluid inverted button large" {{action openModal}} disabled={{isDisabled}}>
+      <i class="icon alarm outline"></i> Přivolat obsluhu
+    </button>
   {{/modal-waitress}}
 </div>
 <div class="column">
-  {{link-to ' Menu' 'menu' class="ui fluid inverted button"}}
-</div>
-<div class="column">
-  {{link-to 'Účty' 'tickets' class="ui fluid inverted button"}}
+  {{#link-to 'tickets' class="ui fluid inverted button large"}}
+    <i class="icon users"></i> Účty
+  {{/link-to}}
 </div>
 {{#if orderService.currentOrderPrice}}
   {{#order-view as |order|}}
     <div class="column">
-      <button class="ui fluid inverted button huge orange" {{action order}}> Dokončit objednávku ({{money orderService.currentOrderPrice}})</button>
+      <button class="ui fluid inverted button huge orange" {{action order}}>
+        <i class="external share icon"></i> Dokončit objednávku ({{money orderService.currentOrderPrice}}) <br> a donést na stůl
+      </button>
     </div>
   {{/order-view}}
 {{else}}
   <div class="column">
-    {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button" disabled=(eq tickets.length 0)}}
+    {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button large" disabled=(eq tickets.length 0)}}
   </div>
 {{/if}}
