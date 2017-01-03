@@ -7,7 +7,7 @@
       translucentOverlay=true}}
     <h2>Vytvořit účet</h2>
     <div class="ui fluid action input">
-      {{input value=name class="item-150" autofocus=true}}
+      {{input value=name class="item-150" autofocus=true placeholder="Název lístku"}}
       <button class="ui black button" {{action 'addNewTicket' name}} disabled={{not canAddNewTicket}} >Přidat</button>
     </div>
   {{/modal-dialog}}

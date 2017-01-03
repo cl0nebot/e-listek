@@ -5,17 +5,21 @@
       close=(action (toggle 'isModalOpen' this))
       targetAttachment="center"
       translucentOverlay=true}}
+    <i {{action (toggle 'isModalOpen' this)}} role="button" class="close icon remove large"></i>
     <div class="big">
       <h2>K objednání</h2>
       {{#each orderService.currentOrder as |ticket|}}
         <h4>Lístek: {{ticket.ticket.name}}</h4>
         <div class="ui bulleted list">
           {{#each ticket.items as |item|}}
-            <div class="item">{{item.item.name}} ({{item.count}}x)</div>
+            <div class="item">
+              {{item.item.name}} ({{item.count}}x)
+              <button {{action 'remove' ticket item}} class="ui secondary button small"><i class="icon remove large"></i></button>
+            </div>
           {{/each}}
         </div>
       {{/each}}
-      <button class="ui fluid primary button" {{action 'order'}}>Objednat za {{money orderService.currentOrderPrice}}</button>
+      <button class="ui fluid primary button" {{action 'order'}}>Donést na stůl ({{money orderService.currentOrderPrice}})</button>
     </div>
   {{/modal-dialog}}
 {{/if}}

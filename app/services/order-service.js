@@ -11,9 +11,7 @@ export default Ember.Service.extend({
       .reduce((curr, next) => curr + next.items
         .reduce((curr, next) => curr + next.get('item.price') * next.get('count'), 0), 0);
   }),
-  showConfirmation() {
-    this.toggleProperty('isOrderConfirmationShowing');
-  },
+
   init() {
     this._super(...arguments);
 
@@ -22,6 +20,11 @@ export default Ember.Service.extend({
 
   reset() {
     this.set('currentOrder', []);
+    this.notifyPropertyChange('currentOrderPrice');
+  },
+
+  remove(ticket, item) {
+    ticket.get('items').removeObject(item);
     this.notifyPropertyChange('currentOrderPrice');
   },
 
