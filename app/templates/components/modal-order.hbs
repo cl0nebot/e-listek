@@ -6,13 +6,17 @@
 
   <h1>{{item.name}}</h1>
   <div class="ui two column grid">
-      <div class="order column"><h3>Zvolte účet</h3></div>
-      <div class="order column"><h3>Zvolte množství</h3></div>
+    <div class="order column">
+      <h3>Zvolte účet</h3>
+    </div>
+    <div class="order column">
+      <h3>Zvolte množství</h3>
+    </div>
   </div>
   <div class="ui two column grid">
     {{#each tickets as |ticket|}}
       <div class="order column">
-        <button class="ui fluid {{ticket.color}} button {{if ticket.isActive 'notActive'}}" {{action (toggle 'isActive' ticket)}}>
+        <button class="ui fluid {{ticket.color}} button {{if ticket.isActive 'active'}}" {{action (toggle 'isActive' ticket)}}>
           <i class="icon {{if ticket.isActive 'remove' 'checkmark'}}"></i> {{ticket.name}}
         </button>
       </div>
