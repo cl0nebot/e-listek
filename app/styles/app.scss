@@ -64,7 +64,9 @@ h1.exclusive.payment{
   margin: 5vw;
 }
 .big{
-  padding: 1vw;
+  padding: 5vw;
+  min-width: 80vw;
+  min-height: 10vw;
 }
 .big>h2{
   font-size: 3vw;
@@ -85,4 +87,3 @@ h1.exclusive.payment{
 .big>.list>.item{
   font-size: 1.5vw;
 }
-
