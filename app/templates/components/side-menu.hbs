@@ -1,12 +1,3 @@
-{{#if orderService.currentOrderPrice}}
-  {{#order-view as |order|}}
-    <div class="column">
-      <button class="ui fluid button huge orange" {{action order}}>
-        <i class="external share icon"></i> Dokončit objednávku ({{money orderService.currentOrderPrice}}) <br> a donést na stůl
-      </button>
-    </div>
-  {{/order-view}}
-{{/if}}
 <div class="column">
   {{#link-to 'menu' class="ui fluid inverted button large"}}
     <i class="browser icon"></i> Menu
@@ -24,6 +15,16 @@
     <i class="icon users"></i> Účty
   {{/link-to}}
 </div>
-<div class="column">
-  {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button large" disabled=(eq tickets.length 0)}}
-</div>
+{{#if orderService.currentOrderPrice}}
+  {{#order-view as |order|}}
+    <div class="column">
+      <button class="ui fluid inverted button huge orange" {{action order}}>
+        <i class="external share icon"></i> Dokončit objednávku ({{money orderService.currentOrderPrice}}) <br> a donést na stůl
+      </button>
+    </div>
+  {{/order-view}}
+{{else}}
+  <div class="column">
+    {{link-to ' Zaplatit' 'payment' class="ui fluid inverted button large" disabled=(eq tickets.length 0)}}
+  </div>
+{{/if}}
