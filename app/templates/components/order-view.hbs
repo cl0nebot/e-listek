@@ -14,7 +14,7 @@
           {{#each ticket.items as |item|}}
             <div class="item">
               {{item.item.name}} ({{item.count}}x)
-              <button {{action 'remove' ticket item}} class="ui secondary button small"><i class="icon remove large"></i></button>
+              <button {{action 'remove' ticket item}} class="ui secondary right floated button small"><i class="icon remove large"></i></button>
             </div>
           {{/each}}
         </div>
